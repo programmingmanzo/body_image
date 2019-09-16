@@ -1,5 +1,9 @@
 # Specifications for the Sinatra Assessment
+<<<<<<< HEAD
 #testing 
+=======
+
+>>>>>>> 0b903ca... created a user model and spec.md file
 Specs:
 - [x] Use Sinatra to build the app
 I am using Sinatra to build this app. 

@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20190916234557) do
 
   create_table "measurement_entries", force: :cascade do |t|
@@ -32,5 +33,8 @@ ActiveRecord::Schema.define(version: 20190916234557) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
+=======
+ActiveRecord::Schema.define(version: 0) do
+>>>>>>> 0b903ca... created a user model and spec.md file
 
 end
