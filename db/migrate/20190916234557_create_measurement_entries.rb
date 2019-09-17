@@ -2,6 +2,7 @@ class CreateMeasurementEntries < ActiveRecord::Migration
   def change
     create_table :measurement_entries do |t|
       t.string :weight
+      t.string :waist 
       t.string :hips
       t.string :right_arm
       t.string :left_arm
