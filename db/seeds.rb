@@ -13,7 +13,8 @@ MeasurementEntry.create(
     right_arm: "17",
     left_arm: "16.5",
     right_thigh: "23",
-    left_thigh: "22.5"
+    left_thigh: "22.5",
+    user_id: manzo.id 
     )   
 
 #Use AR to pre-associate data:
