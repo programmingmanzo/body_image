@@ -10,7 +10,14 @@ class UsersController < ApplicationController
         @user = User.find_by(email: params[:email])
         #Authenticate the user - verify the user are who they say they are
         #they the credentials - email/password combo
-        @user.authenticate(params[:password])
+        if @user.authenticate(params[:password])
+            session[:user_id] = @user.id #This is what actually logs the user in
+
+            puts session 
+            redirect "users/#{@user.id}"
+        else
+        end
+
         #log the user in 
         #redirect to the user's landing page (show? index? dashboard?)
        
@@ -18,6 +25,10 @@ class UsersController < ApplicationController
 
     get '/signup' do 
         erb :signup 
+    end
+
+    get '/users/:id' do 
+        "this will be the user show route"
     end
 
 end
