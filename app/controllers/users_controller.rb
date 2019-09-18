@@ -1,7 +1,7 @@
-class UserController < ApplicationController 
+class UsersController < ApplicationController 
     
     get '/login' do #render the login in page 
-        erb: login
+        erb :login
     end
 
     post '/login' do #receive the login form, find the user and log the user in (create session)
@@ -9,7 +9,7 @@ class UserController < ApplicationController
     end
 
     get '/signup' do 
-        erb: signup 
+        erb :signup 
     end
 
 end
