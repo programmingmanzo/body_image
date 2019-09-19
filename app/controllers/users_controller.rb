@@ -12,10 +12,10 @@ class UsersController < ApplicationController
         #they the credentials - email/password combo
         if @user.authenticate(params[:password])
             session[:user_id] = @user.id #This is what actually logs the user in
-
             puts session 
             redirect "users/#{@user.id}"
         else
+            redirect '/login'
         end
 
         #log the user in 
@@ -31,10 +31,11 @@ class UsersController < ApplicationController
         
         if params[:name] != "" && params[:email] != "" && params[:password] != ""
             @user = User.create(params)
+            session[:user_id] = @user.id
             redirect "/users/#{@user.id}"
 
         else
-
+            redirect '/signup'
         end
 
     end
@@ -46,4 +47,8 @@ class UsersController < ApplicationController
         erb :'/users/show'
     end
 
+    get '/logout' do 
+        session.clear
+        redirect '/'
+    end
 end
