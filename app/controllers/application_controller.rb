@@ -24,7 +24,5 @@ class ApplicationController < Sinatra::Base
       @current_user ||= User.find_by(id: session[:user_id]) #Will return nil if there isn't logged in
     
     end
-
-
-
+  end
 end
