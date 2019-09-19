@@ -28,11 +28,22 @@ class UsersController < ApplicationController
     end
 
     post '/users' do 
-        binding.pry 
+        
+        if params[:name] != "" && params[:email] != "" && params[:password] != ""
+            @user = User.create(params)
+            redirect "/users/#{@user.id}"
+
+        else
+
+        end
+
     end
 
     get '/users/:id' do 
-        "this will be the user show route"
+    
+        @user = User.find_by(id: params[:id])
+        #binding.pry 
+        erb :'/users/show'
     end
 
 end
