@@ -23,8 +23,12 @@ class UsersController < ApplicationController
        
     end
 
-    get '/signup' do 
+    get '/signup' do #renders a signup form
         erb :signup 
+    end
+
+    post '/users' do 
+        binding.pry 
     end
 
     get '/users/:id' do 
