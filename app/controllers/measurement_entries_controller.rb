@@ -15,5 +15,10 @@ class MeasurementEntriesController < ApplicationController
         else
             redirect '/measurement_entries/new'
         end
+
+        get '/measurement_entries/:id' do 
+            @measurement_entry = MeasurementEntry.find(params[:id])
+            erb :'/measurement_entries/show'
+        end
     end
 end
