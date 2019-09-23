@@ -22,4 +22,8 @@ class MeasurementEntriesController < ApplicationController
         @measurement_entry = MeasurementEntry.find(params[:id])
         erb :'/measurement_entries/show'
     end
+
+    get '/measurement_entries/:id/edit' do 
+        erb :'/measurement_entries/edit'
+    end
 end
