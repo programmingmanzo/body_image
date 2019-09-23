@@ -10,15 +10,16 @@ class MeasurementEntriesController < ApplicationController
         end
         
         if params[:content] != ""
-            @measurement_entry = MeasurementEntry.create(content: params[:content], user_id: current_user.id)
+            @measurement_entry = MeasurementEntry.create(weight: params[:content], user_id:current_user.id)
+            #binding.pry
             redirect "/measurement_entries/#{@measurement_entry.id}"
         else
             redirect '/measurement_entries/new'
         end
+    end
 
-        get '/measurement_entries/:id' do 
-            @measurement_entry = MeasurementEntry.find(params[:id])
-            erb :'/measurement_entries/show'
-        end
+    get '/measurement_entries/:id' do 
+        @measurement_entry = MeasurementEntry.find(params[:id])
+        erb :'/measurement_entries/show'
     end
 end
