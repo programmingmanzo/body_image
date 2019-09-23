@@ -8,6 +8,7 @@ class UsersController < ApplicationController
         #find the user
         #params looks like: {email: "user@user.com, password: "password"}
         @user = User.find_by(email: params[:email])
+        #binding.pry 
         #Authenticate the user - verify the user are who they say they are
         #they the credentials - email/password combo
         if @user.authenticate(params[:password])
