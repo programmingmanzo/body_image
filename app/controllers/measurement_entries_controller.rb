@@ -46,7 +46,7 @@ class MeasurementEntriesController < ApplicationController
     patch '/measurement_entries/:id' do
         set_measurement_entry
         if logged_in?
-            if @measurement_entry.user == current_user
+            if @measurement_entry.user == current_user && params[:content] != ""
             @measurement_entry.update(weight: params[:content])
             redirect "/measurement_entries/#{@measurement_entry.id}"
             else
@@ -56,6 +56,17 @@ class MeasurementEntriesController < ApplicationController
             redirect '/'
         end 
     end
+
+    delete '/measurement_entry/:id' do 
+        set_measurement_entry
+        if authorized_to_edit?(@measurement_entry)
+            @measurement_entry.destroy
+            redirect '/measurement_enteries'
+        else 
+            redirect '/measurement_entries'
+        end
+    end
+
 
     private 
 
