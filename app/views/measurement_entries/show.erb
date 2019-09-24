@@ -1,8 +1,8 @@
 SHOW PAGE FOR A MEASUREMENT ENTRY
 
 <p><%= @measurement_entry.weight %></p>
-
-Edit Link
+<%if current_user == @measurement_entry.user %>
 <a href="/measurement_entries/<%= @measurement_entry.id %>/edit">Edit Entry</a>
 
 Delete Link 
+<% end %>
