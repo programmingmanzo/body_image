@@ -3,6 +3,9 @@ SHOW PAGE FOR A MEASUREMENT ENTRY
 <p><%= @measurement_entry.weight %></p>
 <%if current_user == @measurement_entry.user %>
 <a href="/measurement_entries/<%= @measurement_entry.id %>/edit">Edit Entry</a>
-
-Delete Link 
+<br><br>
+<form class="" action= "/measurement_entries/<%= @measurement_entry.id %>" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" name="" value="Delete this Entry">
+    </form>
 <% end %>
