@@ -11,17 +11,12 @@ class UsersController < ApplicationController
         #binding.pry 
         #Authenticate the user - verify the user are who they say they are
         #they the credentials - email/password combo
-        if @user.authenticate(params[:password])
+        if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id #This is what actually logs the user in
-            puts session 
             redirect "users/#{@user.id}"
         else
             redirect '/login'
         end
-
-        #log the user in 
-        #redirect to the user's landing page (show? index? dashboard?)
-       
     end
 
     get '/signup' do #renders a signup form
