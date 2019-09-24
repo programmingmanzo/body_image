@@ -19,11 +19,34 @@ class MeasurementEntriesController < ApplicationController
     end
 
     get '/measurement_entries/:id' do 
-        @measurement_entry = MeasurementEntry.find(params[:id])
+        set_measurement_entry
+        #binding.pry 
         erb :'/measurement_entries/show'
     end
 
     get '/measurement_entries/:id/edit' do 
-        erb :'/measurement_entries/edit'
+        set_measurement_entry
+        if logged_in?
+            if @measurement_entry.user == current_user
+                erb :'/measurement_entries/edit'
+            else 
+                redirect "users/#{current_user.id}"
+            end
+        else
+            redirect '/'
+        end
+    end
+
+    patch '/measurement_entries/:id' do
+        set_measurement_entry
+        #binding.pry
+        @measurement_entry.update(weight: params[:content])
+        redirect "/measurement_entries/#{@measurement_entry.id}"
+    end
+
+    private 
+
+    def set_measurement_entry 
+        @measurement_entry = MeasurementEntry.find(params[:id])
     end
 end
