@@ -1,4 +1,10 @@
 class MeasurementEntriesController < ApplicationController
+    
+    get '/measurement_entries' do
+        @measurement_entries = MeasurementEntry.all 
+        erb :'measurement_entries/index'
+    end
+    
     get '/measurement_entries/new' do 
         erb :'/measurement_entries/new'
     end 
@@ -27,7 +33,7 @@ class MeasurementEntriesController < ApplicationController
     get '/measurement_entries/:id/edit' do 
         set_measurement_entry
         if logged_in?
-            if @measurement_entry.user == current_user
+            if authorized_to_edit?(@measurement_entry)
                 erb :'/measurement_entries/edit'
             else 
                 redirect "users/#{current_user.id}"
