@@ -1,1 +1,7 @@
-INDEX PAGE FOR MEASUREMENT ENTRIES
+All MEASUREMENT ENTRIES
+<% @measurement_entries.each do |measurement_entry| %>
+    <h4><a href="/measurement_entries/<%= measurement_entry.id %>"><%= measurement_entry.created_at %></a></h4>
+    <p><%= measurement_entry.weight %></p>
+    <p>By <%= measurement_entry.user.name %></p> 
+    <br><br>
+<% end %>
