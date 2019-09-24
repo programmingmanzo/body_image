@@ -1,1 +1,8 @@
-EDIT FORM GOES HERE 
+EDIT PAGE FOR A MEASUREMENT ENTRY
+
+<form class="" action="/measurement_entries/<%= @measurement_entry.id %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <label for="content">Weight:</label>
+    <textarea name="content" style="width:auto; height:auto;"><%= @measurement_entry.weight %></textarea>
+    <input type="submit" name="" value="Update Entry">
+</form>
