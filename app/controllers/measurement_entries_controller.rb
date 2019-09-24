@@ -39,9 +39,16 @@ class MeasurementEntriesController < ApplicationController
 
     patch '/measurement_entries/:id' do
         set_measurement_entry
-        #binding.pry
-        @measurement_entry.update(weight: params[:content])
-        redirect "/measurement_entries/#{@measurement_entry.id}"
+        if logged_in?
+            if @measurement_entry.user == current_user
+            @measurement_entry.update(weight: params[:content])
+            redirect "/measurement_entries/#{@measurement_entry.id}"
+            else
+            redirect "/users/#{current_user.id}"
+            end 
+        else
+            redirect '/'
+        end 
     end
 
     private 
