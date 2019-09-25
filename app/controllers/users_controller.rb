@@ -15,6 +15,7 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id #This is what actually logs the user in
             redirect "users/#{@user.id}"
         else
+            flash[:message] = "Your credentials were invalid. Please sign up or login"
             redirect '/login'
         end
     end

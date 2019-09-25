@@ -16,10 +16,12 @@ class MeasurementEntriesController < ApplicationController
         end
         
         if params[:content] != ""
+            flash[:method] = "New entry created successfully!"
             @measurement_entry = MeasurementEntry.create(weight: params[:content], user_id:current_user.id)
             #binding.pry
             redirect "/measurement_entries/#{@measurement_entry.id}"
         else
+            flash[:message] = "Please fill in all fields"
             redirect '/measurement_entries/new'
         end
     end
