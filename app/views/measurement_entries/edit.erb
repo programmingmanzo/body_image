@@ -2,7 +2,19 @@ EDIT PAGE FOR A MEASUREMENT ENTRY
 
 <form class="" action="/measurement_entries/<%= @measurement_entry.id %>" method="post">
     <input type="hidden" name="_method" value="patch">
-    <label for="content">Weight:</label>
-    <textarea name="content" style="width:auto; height:auto;"><%= @measurement_entry.weight %></textarea>
+    <label for="weight">Weight(lbs):</label>
+    <input type="text" name="weight" value ="<%= @measurement_entry.weight %>"><br>
+    <label for="waist">Waist(in):</label>
+    <input type="text" name="waist" value ="<%= @measurement_entry.waist %>"><br>
+    <label for="hips">Hips(in):</label>
+    <input type="text" name="hips" value ="<%= @measurement_entry.hips %>"><br>
+    <label for="right_arm">Right Arm(in):</label>
+    <input type="text" name="right_arm" value ="<%= @measurement_entry.right_arm %>"><br>
+    <label for="left_arm">Left Arm(in):</label>
+    <input type="text" name="left_arm" value ="<%= @measurement_entry.left_arm %>"><br>
+    <label for="right_arm">Right Arm(in):</label>
+    <input type="text" name="right_thigh" value ="<%= @measurement_entry.right_thigh %>"><br>
+    <label for="left_arm">Left Arm(in):</label>
+    <input type="text" name="left_thigh" value ="<%= @measurement_entry.left_thigh %>"><br>
     <input type="submit" name="" value="Update Entry">
 </form>
