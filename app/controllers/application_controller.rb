@@ -11,11 +11,8 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    if logged_in?
-      redirect "/users/#{current_user.id}"
-    else 
+    redirect_if_logged_in
     erb :welcome 
-    end
   end
 
   helpers do 
@@ -31,6 +28,19 @@ class ApplicationController < Sinatra::Base
 
     def authorized_to_edit?(measurement_entry)
       measurement_entry.user == current_user
+    end
+
+    def redirect_if_not_logged_in 
+      if !logged_in? 
+        flash[:errors] = "You must be logged in, in order to view the page."
+        redirect '/'
+      end
+    end
+
+    def redirect_if_logged_in
+      if logged_in?
+        redirect "/users/#{current_user.id}"
+      end
     end
     
   end
