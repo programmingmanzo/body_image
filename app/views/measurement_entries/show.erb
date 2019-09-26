@@ -1,11 +1,22 @@
 SHOW PAGE FOR A MEASUREMENT ENTRY
 
 <p><%= @measurement_entry.weight %></p>
-<%if current_user == @measurement_entry.user %>
-<a href="/measurement_entries/<%= @measurement_entry.id %>/edit">Edit Entry</a>
-<br><br>
-<form class="" action= "/measurement_entries/<%= @measurement_entry.id %>" method="post">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" name="" value="Delete this Entry">
-    </form>
+<p><%= @measurement_entry.waist %></p>
+<p><%= @measurement_entry.hips %></p>
+<p><%= @measurement_entry.right_arm %></p>
+<p><%= @measurement_entry.left_arm %></p>
+<p><%= @measurement_entry.right_thigh %></p>
+<p><%= @measurement_entry.left_thigh %></p>
+
+<p>Created by: <%= @measurement_entry.user.name %></p>
+
+<p>Created on: <%= @measurement_entry.created_at.strftime("%A, %d %b %Y %l:%M %p") %></p>
+
+<% if authorized_to_edit?(@measurement_entry) %>
+  <a href="/measurement_entries/<%= @measurement_entry.id %>/edit">Edit Entry</a>
+  <br><br>
+<form action="/measurement_entries/<%=@measurement_entry.id%>" method="post">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete this entry">
+</form>
 <% end %>
