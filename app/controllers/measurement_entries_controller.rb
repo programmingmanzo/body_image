@@ -6,21 +6,23 @@ class MeasurementEntriesController < ApplicationController
     end
     
     get '/measurement_entries/new' do 
+        redirect_if_not_logged_in
         erb :'/measurement_entries/new'
     end 
 
     post '/measurement_entries' do 
 
-        if !logged_in?
-            redirect '/'
-        end
+        redirect_if_not_logged_in
         
-        if params[:content] != ""
+        if  params[:weight] != "" #params[:weight] && params[:waist] && params[:hips] && params[:right_arm] && params[:left_arm] && params[:right_thigh] && params[:left_thigh] != ""
+            #raise params.inspect
+
+            
+            @measurement_entry = MeasurementEntry.create(weight: params[:weight], user_id:current_user.id, waist: params[:waist], hips: params[:hips], right_arm: params[:right_arm], left_arm: params[:left_arm], right_thigh: params[:right_thigh], left_thigh: params[:left_thigh])
             flash[:method] = "New entry created successfully!"
-            @measurement_entry = MeasurementEntry.create(weight: params[:content], user_id:current_user.id)
-            #binding.pry
             redirect "/measurement_entries/#{@measurement_entry.id}"
         else
+            #raise params.inspect
             flash[:message] = "Please fill in all fields"
             redirect '/measurement_entries/new'
         end
@@ -49,7 +51,7 @@ class MeasurementEntriesController < ApplicationController
         set_measurement_entry
         if logged_in?
             if @measurement_entry.user == current_user && params[:content] != ""
-            @measurement_entry.update(weight: params[:content])
+            @measurement_entry.update(weight: params[:weight], user_id: current_user.id, waist: params[:waist], hips: params[:hips], right_arm: params[:right_arm], left_arm: params[:left_arm], right_thigh: params[:right_thigh], left_thigh: params[:left_thigh])
             redirect "/measurement_entries/#{@measurement_entry.id}"
             else
             redirect "/users/#{current_user.id}"
@@ -59,14 +61,16 @@ class MeasurementEntriesController < ApplicationController
         end 
     end
 
-    delete '/measurement_entry/:id' do 
+    delete '/measurement_entries/:id' do 
         set_measurement_entry
         if authorized_to_edit?(@measurement_entry)
             @measurement_entry.destroy
-            redirect '/measurement_enteries'
+            flash[:message] = "Successfully deleted entry."
+            redirect '/measurement_entries'
         else 
             redirect '/measurement_entries'
         end
+
     end
 
 
@@ -74,5 +78,8 @@ class MeasurementEntriesController < ApplicationController
 
     def set_measurement_entry 
         @measurement_entry = MeasurementEntry.find(params[:id])
+        #binding.pry 
     end
 end
+
+
