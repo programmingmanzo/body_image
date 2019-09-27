@@ -17,13 +17,12 @@ class ApplicationController < Sinatra::Base
 
   helpers do 
 
-    def logged_in? #true if user is logged in, otherwise false
-
-      !!current_user #(!!)returns a boolean reflection of the truthiness of the object   
+    def logged_in?
+      !!current_user  
     end
 
     def current_user
-      @current_user ||= User.find_by(id: session[:user_id]) #Will return nil if there isn't logged in
+      @current_user ||= User.find_by(id: session[:user_id])
     end
 
     def authorized_to_edit?(measurement_entry)

@@ -11,7 +11,7 @@
 
 <p>Created by: <%= @measurement_entry.user.name %></p>
 
-<p>Created on: <%= @measurement_entry.created_at.strftime("%A, %d %b %Y") %></p>
+<p>Created on: <%= @measurement_entry.created_at.strftime("%A, %B %e, %Y") %></p>
 
 <% if authorized_to_edit?(@measurement_entry) %>
   <big><a class="link" href="/measurement_entries/<%= @measurement_entry.id %>/edit">Edit Entry</a></big>

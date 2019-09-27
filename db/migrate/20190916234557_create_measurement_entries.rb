@@ -8,9 +8,9 @@ class CreateMeasurementEntries < ActiveRecord::Migration
       t.string :left_arm
       t.string :right_thigh
       t.string :left_thigh   
-      t.integer :user_id #Having this line should tell you to add associations between models 
+      t.integer :user_id 
 
-      t.timestamps null: false #This line will automatically gives you time stamp any time you create or update any model
+      t.timestamps null: false
     end
   end
 end

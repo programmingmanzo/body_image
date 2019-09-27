@@ -11,18 +11,13 @@ class MeasurementEntriesController < ApplicationController
     end 
 
     post '/measurement_entries' do 
-
         redirect_if_not_logged_in
         
-        if  params[:weight] != "" #params[:weight] && params[:waist] && params[:hips] && params[:right_arm] && params[:left_arm] && params[:right_thigh] && params[:left_thigh] != ""
-            #raise params.inspect
-
-            
+        if  params[:weight] != ""
             @measurement_entry = MeasurementEntry.create(weight: params[:weight], user_id:current_user.id, waist: params[:waist], hips: params[:hips], right_arm: params[:right_arm], left_arm: params[:left_arm], right_thigh: params[:right_thigh], left_thigh: params[:left_thigh])
             flash[:method] = "New entry created successfully!" if @measurement_entry.id
             redirect "/measurement_entries/#{@measurement_entry.id}"
         else
-            #raise params.inspect
             flash[:message] = "Please fill in all fields"
             redirect '/measurement_entries/new'
         end
@@ -30,7 +25,6 @@ class MeasurementEntriesController < ApplicationController
 
     get '/measurement_entries/:id' do 
         set_measurement_entry
-        #binding.pry 
         erb :'/measurement_entries/show'
     end
 
@@ -70,7 +64,6 @@ class MeasurementEntriesController < ApplicationController
         else 
             redirect '/measurement_entries'
         end
-
     end
 
 
