@@ -32,7 +32,7 @@ class UsersController < ApplicationController
             redirect "/users/#{@user.id}"
 
         else
-            flash[:message] = "Please fill in all fields"
+            flash[:message] = "Please fill in all fields!!!"
             redirect '/signup'
         end
 

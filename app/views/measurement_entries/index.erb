@@ -1,13 +1,12 @@
-All MEASUREMENT ENTRIES
+<h2>All Measurement Entries</h2>
 <% @measurement_entries.each do |measurement_entry| %>
-    <h4><a href="/measurement_entries/<%= measurement_entry.id %>"><%= measurement_entry.created_at.strftime("%A, %d %b %Y %l:%M %p") %></a></h4>
-    <p><%= measurement_entry.weight %></p>
-    <p><%= measurement_entry.waist %></p>
-    <p><%= measurement_entry.hips %></p>
-    <p><%= measurement_entry.right_arm %></p>
-    <p><%= measurement_entry.left_arm %></p>
-    <p><%= measurement_entry.right_thigh %></p>
-    <p><%= measurement_entry.left_thigh %></p>
-    <p>By <%= measurement_entry.user.name %></p> 
-    <br><br>
+    <% if authorized_to_edit?(measurement_entry) %>
+        <h4><a class="link" href="/measurement_entries/<%= measurement_entry.id %>"><%= measurement_entry.created_at.strftime("%A, %d %b %Y") %></a></h4>
+        <p>By <%= measurement_entry.user.name %></p> 
+        <br><br>
+    <% end %>
 <% end %>
+
+
+
+

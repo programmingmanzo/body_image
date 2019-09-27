@@ -1,19 +1,20 @@
-SHOW PAGE FOR A MEASUREMENT ENTRY
+<h2>Measurement Entry</h2>
 
-<p><%= @measurement_entry.weight %></p>
-<p><%= @measurement_entry.waist %></p>
-<p><%= @measurement_entry.hips %></p>
-<p><%= @measurement_entry.right_arm %></p>
-<p><%= @measurement_entry.left_arm %></p>
-<p><%= @measurement_entry.right_thigh %></p>
-<p><%= @measurement_entry.left_thigh %></p>
+    <label for="weight">Weight(lbs): <%= @measurement_entry.weight %></label><br> 
+    <label for="waist">Waist(in): <%= @measurement_entry.waist %></label><br>
+    <label for="hips">Hips(in): <%= @measurement_entry.hips %></label><br>
+    <label for="right_arm">Right Arm(in): <%= @measurement_entry.right_arm %></label><br>
+    <label for="left_arm">Left Arm(in): <%= @measurement_entry.left_arm %></label><br>
+    <label for="right_thigh">Right Thigh(in): <%= @measurement_entry.right_thigh %></label><br>
+    <label for="left_thigh">Left Thigh(in): <%= @measurement_entry.left_thigh %></label><br><br>
+
 
 <p>Created by: <%= @measurement_entry.user.name %></p>
 
-<p>Created on: <%= @measurement_entry.created_at.strftime("%A, %d %b %Y %l:%M %p") %></p>
+<p>Created on: <%= @measurement_entry.created_at.strftime("%A, %d %b %Y") %></p>
 
 <% if authorized_to_edit?(@measurement_entry) %>
-  <a href="/measurement_entries/<%= @measurement_entry.id %>/edit">Edit Entry</a>
+  <big><a class="link" href="/measurement_entries/<%= @measurement_entry.id %>/edit">Edit Entry</a></big>
   <br><br>
 <form action="/measurement_entries/<%=@measurement_entry.id%>" method="post">
   <input type="hidden" name="_method" value="DELETE">

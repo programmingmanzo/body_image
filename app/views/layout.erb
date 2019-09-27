@@ -11,14 +11,15 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <link rel="stylesheet" href="/css/main.css" />
   </head>
+
   <body>
     <div class="nav">
       <% if logged_in? %>
-        <a href="/logout">Logout</a>
-        <a href="/measurement_entries">All Measurement Entries</a>
-        <a href="/measurement_entries/new">New Entry</a>
+        <big><a class="link" href="/logout">Logout</a></big> ||
+        <big><a class="link" href="/measurement_entries">All Measurement Entries</a></big> ||
+        <big><a class="link" href="/measurement_entries/new">New Entry</a></big>
       <% end %>
     </div>
     <% if flash[:message] %>
@@ -37,6 +38,6 @@
     <!--[if lt IE 7]>
       <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
       <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
-    <![endif]-->
+   <![endif]-->
   </body>
 </html>

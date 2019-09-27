@@ -7,27 +7,33 @@
   }
 
   html, body {
+
     height: 100%;
     width: 100%;
   }
 
+
   /* --- Welcome Page Styles --- */
   body {
-    background-color: lightblue;
-    color: #333;
-    font-family: Sans-Serif;
-    line-height: 18px;
+    background-color: maroon;
+    color: white;
+    font-family: Lucida Sans;
+    line-height: 20px;
+    text-align: center;
+    font-size: 16px;
   }
 
+
   .wrapper {
-    background: #fff;
+    background: black;
     -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
     box-shadow: 0 0 10px rgba(0,0,0,.3);
     margin: 16px auto;
-    max-width: 960px;
+    max-width: 1000px;
     padding: 2.25%; /* 18px / 800px */
     width: 85%;
+    text-align: center;
   }
 
   h1 {
@@ -37,7 +43,7 @@
 
   h2 {
     border-bottom: 2px solid #ccc;
-    font-size: 24px;
+    font-size: 32px;
     line-height: 36px;
     margin-bottom: 16px;
   }
@@ -81,6 +87,11 @@
     margin-top: 20px;
     padding-top: 20px;
   }
+
+  .link {
+    color: blue;
+  }
+
 }
 
 @media screen and (max-width: 600px) {
