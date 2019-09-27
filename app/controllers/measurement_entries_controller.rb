@@ -1,7 +1,7 @@
 class MeasurementEntriesController < ApplicationController
     
     get '/measurement_entries' do
-        @measurement_entries = MeasurementEntry.all 
+        @measurement_entries = MeasurementEntry.all
         erb :'measurement_entries/index'
     end
     
@@ -19,7 +19,7 @@ class MeasurementEntriesController < ApplicationController
 
             
             @measurement_entry = MeasurementEntry.create(weight: params[:weight], user_id:current_user.id, waist: params[:waist], hips: params[:hips], right_arm: params[:right_arm], left_arm: params[:left_arm], right_thigh: params[:right_thigh], left_thigh: params[:left_thigh])
-            flash[:method] = "New entry created successfully!"
+            flash[:method] = "New entry created successfully!" if @measurement_entry.id
             redirect "/measurement_entries/#{@measurement_entry.id}"
         else
             #raise params.inspect
