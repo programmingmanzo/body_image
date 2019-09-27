@@ -14,7 +14,7 @@ class MeasurementEntriesController < ApplicationController
         redirect_if_not_logged_in
         
         if  params[:weight] != ""
-            @measurement_entry = MeasurementEntry.create(weight: params[:weight], user_id:current_user.id, waist: params[:waist], hips: params[:hips], right_arm: params[:right_arm], left_arm: params[:left_arm], right_thigh: params[:right_thigh], left_thigh: params[:left_thigh])
+            @measurement_entry = MeasurementEntry.create(new_entry(params)) #(weight: params[:weight], user_id:current_user.id, waist: params[:waist], hips: params[:hips], right_arm: params[:right_arm], left_arm: params[:left_arm], right_thigh: params[:right_thigh], left_thigh: params[:left_thigh])
             flash[:method] = "New entry created successfully!" if @measurement_entry.id
             redirect "/measurement_entries/#{@measurement_entry.id}"
         else
@@ -45,7 +45,7 @@ class MeasurementEntriesController < ApplicationController
         set_measurement_entry
         if logged_in?
             if @measurement_entry.user == current_user && params[:content] != ""
-            @measurement_entry.update(weight: params[:weight], user_id: current_user.id, waist: params[:waist], hips: params[:hips], right_arm: params[:right_arm], left_arm: params[:left_arm], right_thigh: params[:right_thigh], left_thigh: params[:left_thigh])
+            @measurement_entry.update(new_entry(params)) #(weight: params[:weight], user_id: current_user.id, waist: params[:waist], hips: params[:hips], right_arm: params[:right_arm], left_arm: params[:left_arm], right_thigh: params[:right_thigh], left_thigh: params[:left_thigh])
             redirect "/measurement_entries/#{@measurement_entry.id}"
             else
             redirect "/users/#{current_user.id}"
@@ -72,6 +72,10 @@ class MeasurementEntriesController < ApplicationController
     def set_measurement_entry 
         @measurement_entry = MeasurementEntry.find(params[:id])
         #binding.pry 
+    end
+
+    def new_entry(params)
+        @new_entry = {weight: params[:weight], user_id: current_user.id, waist: params[:waist], hips: params[:hips], right_arm: params[:right_arm], left_arm: params[:left_arm], right_thigh: params[:right_thigh], left_thigh: params[:left_thigh]}
     end
 end
 
