@@ -1,13 +1,25 @@
-A simple Body Measurement app that allows users to log in, sign up, and create
-measurement entries. Users can also edit and delete their own entries. 
+# BodyImage
 
-LICENSE
+BodyImage is a sinatra web application created so that you can keep track of critical measurement points of the body.
+In the web app you can:
+* Sign up and create a new account
+* Log in with your new credentials 
+* Create a measurement Entry
+* View all of the entries you have created by date/time 
+* Updated/Edit and Delete an entry 
 
-Copyright <2019> <programmingmanzo>
+#Usage
+To use BodyImage, just clone this repo, run $bundle install, $rake db:migrate, and then run $shotgun.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#Contributing
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+To contribute to BodyImage, please:
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+* Fork this repository and create a local branch.
+* Once changes have been made, commit and push the branch to you github fork.
+* Afterwards send in a pull request with a description of your changes.
+
+#License
+
+BodyImage is licensed under the MIT license, which can be read at https://opensource.org/licenses/MIT.
 
